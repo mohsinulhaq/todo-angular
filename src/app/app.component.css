@@ -1,0 +1,25 @@
+.navbar {
+  margin-bottom: 1rem;
+}
+.todo {
+  margin-bottom: 1rem;
+}
+.add-todo {
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+.loading {
+  display: flex;
+  opacity: 0.25;
+  background: #000;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+.loading>i {
+  margin: auto;
+  color: white;
+}

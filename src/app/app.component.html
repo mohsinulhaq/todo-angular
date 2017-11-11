@@ -1,20 +1,26 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">To Do</a>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-3 text-center">
+      <form [formGroup]="form" (ngSubmit)="addTodo(form.value.todo)">
+        <div class="form-group">
+          <textarea class="form-control" rows="5" placeholder="What to do?" formControlName="todo"
+                    required></textarea>
+        </div>
+        <input type="submit" class="btn add-todo" style="width: 100%" value="Add" [disabled]="!form.valid"
+               [ngClass]="{ 'btn-danger': form.touched && !form.valid, 'btn-success': form.valid }">
+      </form>
+    </div>
+    <div class="col-12 col-md-9">
+      <div class="row">
+        <div class="col-12 todo" *ngFor="let todo of todos">
+          <app-todo [todo]="todo.todo" [id]="todo._id" [done]="todo.done? 'done' : ''"
+                    (action)="onAction(todo._id, $event)"></app-todo>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<div class="loading" *ngIf="loading"><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></div>

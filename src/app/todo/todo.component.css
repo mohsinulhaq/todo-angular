@@ -1,0 +1,8 @@
+.status {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: #009688;
+}
+.button-container {
+  margin-left: auto;
+}

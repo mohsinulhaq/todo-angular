@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-body">
+    {{todo}}
+  </div>
+  <div class="card-footer d-flex">
+    <div class="status" *ngIf="done"><i class="fa fa-check"></i>{{done}}</div>
+    <div class="button-container">
+      <button class="btn btn-danger" (click)="onDelete($event)">
+        <i class="fa fa-trash"></i>
+        Delete
+      </button>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-primary" (click)="onUndone($event)">
+        <i class="fa fa-thumbs-down"></i>
+        Undo
+      </button>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-success" (click)="onDone($event)">
+        <i class="fa fa-thumbs-up"></i>
+        Done
+      </button>
+    </div>
+  </div>
+</div>
